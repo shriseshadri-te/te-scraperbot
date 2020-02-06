@@ -3,8 +3,14 @@
 <div id="tesb_card_body_controls">
   <form action = "/generate" method = "POST">
   <div class="form-group row">
-      <label for="AuthHeader"class="col-sm-2 col-form-label" style="font-weight: bold">Authorization Token:</label>
-      <input type="password" class="form-control col-sm-8" id="AuthHeader" name="auth" placeholder="ThousandEyes user Authorization Token">
+      <div>
+        <label for="UserName"class="col-sm-2 col-form-label" style="font-weight: bold">User Name:</label>
+        <input type="user" class="form-control col-sm-8" id="UserName" name="user" placeholder="ThousandEyes User Name">
+      </div>
+      <div>
+        <label for="AuthHeader"class="col-sm-2 col-form-label" style="font-weight: bold">Authorization Token:</label>
+        <input type="password" class="form-control col-sm-8" id="AuthHeader" name="auth" placeholder="ThousandEyes user Authorization Token">
+      </div>
     </div>
     <div class="form-group row">
       <label for="ReportSelector" class="col-sm-2 col-form-label" style="font-weight: bold">Report Query:</label>
