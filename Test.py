@@ -35,8 +35,8 @@ def APIGetTestData(auth,testId):
 
 def APIMain():
     # Define username and password
-    username = 'benton@thousandeyes.com'
-    password = 'ubut1jqf8zcwpmlbtmynrnr45hb52zy0'
+    username = ''
+    password = ''
 
 
     #list  used to store test metadata
