@@ -1,18 +1,12 @@
 import requests
-import csv
-from requests.auth import HTTPBasicAuth
 import json
 import os
 import shutil
+from util import APIAuthCreate, generateCSV
 
-def APIAuthCreate(username, password):
-    # Create auth
-    auth = (username, password)
-    return auth
-
-def APIGetTests(auth):
+def APIGetTests(auth, aid):
     # Define URL
-    url = 'https://api.thousandeyes.com/v6/tests.json'
+    url = 'https://api.thousandeyes.com/v6/tests.json?aid=' + str(aid)
 
     # Obtain a list of tests
     response = requests.get(url, auth=auth)
@@ -33,10 +27,11 @@ def APIGetTestData(auth,testId):
     return testdatatext
 
 
-def APIMain():
+def APIMain(username, token, aid, fileName):
+
     # Define username and password
-    username = ''
-    password = ''
+    # username = 'benton@thousandeyes.com'
+    # password = 'ubut1jqf8zcwpmlbtmynrnr45hb52zy0'
 
 
     #list  used to store test metadata
@@ -47,11 +42,11 @@ def APIMain():
     testdict = {}
 
     # Create the auth
-    auth = APIAuthCreate(username, password)
+    auth = APIAuthCreate(username, token)
     print('Extracting test data..')
 
     # Get the tests
-    tests = APIGetTests(auth)
+    tests = APIGetTests(auth, aid)
 
     # Loop through each test
     for test in tests:
@@ -105,11 +100,5 @@ def APIMain():
     	testObject['entAgents']=entAgents
 
     # WRITE TO CSV
-    toCSV = testobjectlist
-    keys = toCSV[0].keys()
-    with open('./reports/testlist.csv', 'w') as output_file:
-        dict_writer = csv.DictWriter(output_file, keys)
-        dict_writer.writeheader()
-        dict_writer.writerows(toCSV)
-    print('Test data written to file.')
+    generateCSV(fileName, testobjectlist)
     return

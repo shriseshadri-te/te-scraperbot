@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block body %}
 <div id="tesb_card_body_controls">
-  <form action = "/generate" method = "POST">
+  <form action = "/generate" method = "POST" id="scraperbot">
     <div class="form-group row">
         <label for="UserName"class="col-sm-2 col-form-label" style="font-weight: bold">User Name:</label>
         <input type="user" class="form-control col-sm-4" id="UserName" name="user" placeholder="ThousandEyes User Name"></input>
@@ -12,9 +12,9 @@
       </div>
     <div class="form-group row">
       <label for="ReportSelector" class="col-sm-2 col-form-label" style="font-weight: bold">Report Query:</label>
-      <select class="form-control col-sm-8" id="ReportSelector">
-        <option value="account_groups">Assigned Account Groups (Leave Account Group Number blank)</option>
-        <option value="Test">Tests Information with calculated usage</option>
+      <select class="form-control col-sm-8" name="report" id="ReportSelector">
+        <option value="AccountGroups">Assigned Account Groups (Leave Account Group Number blank)</option>
+        <option value="Tests">Tests Information with calculated usage</option>
         <option value="AlertRules">Alert Rules</option>
         <option value="AgentList">Agent Lists</option>
       </select>
@@ -26,24 +26,4 @@
     <button type="submit" class=" col-sm-1 btn btn-secondary">Submit</button>
   </form>
   </div>
-{#      <div id="tesb_card_body_content">#}
-{#      <div id="tesb_downloads"><b>Download report:</b>#}
-{# <a href=#>json</a> |  <a href=#>csv</a>#}
-{#  </div>#}
-{#  <div id="tesb_preview-options">#}
-{#    <form class="form-inline">#}
-{#<b>Preview data:</b>#}
-{#  <div class="form-group mx-sm-3 mb-2">#}
-{#    <select class="form-control" id="preview_selector_01">#}
-{#      <option value="0">json</option>#}
-{#      <option value="1">csv</option>#}
-{#    </select>#}
-{#  </div>#}
-{#  <button type="submit" class="btn btn-secondary mb-2">Preview</button>#}
-{#</form>#}
-{#  </div>#}
-{#  <div id="tesb_preview-pane">#}
-{#    {content}#}
-{#  </div>#}
-{#        </div>#}
 {% endblock %}
