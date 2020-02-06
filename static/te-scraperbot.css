@@ -1,0 +1,120 @@
+/* CSS Variables */
+:root {
+  --primary: #fff;
+  --dark: #333;
+  --light: #ccc;
+  --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+/* CSS elements */
+html {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--dark);
+}
+body {
+  background: #EFEFEF;
+  line-height: 1.4;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#tesb_navbar_dummy {
+  width: 100%;
+  min-height: 45px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #31515B;
+  color: white;
+  margin-bottom: 20px;
+  padding: 5px;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.35);
+  position:fixed;
+  top:0;
+}
+#tesb_footer {
+  width: 100%;
+  min-height: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #31515B;
+  color: white;
+  margin: auto;
+  padding: 5px;
+  padding-left: 15px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+#tesb_body {
+  width: 100%;
+  align-self: center;
+  min-height: 200px;
+  min-width: 600px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  color: black;
+margin: auto;
+margin-top: 60px;
+}
+#tesb_card_body_controls {
+  width: 95%;
+  align-self: center;
+  min-height: 200px;
+  min-width: 600px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: black;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.35);
+  margin: auto;
+  margin-top: 60px;
+  border-radius: 4px;
+  border-color: #000000;
+  border-width: 8px;
+}
+#tesb_card_body_content {
+  width: 95%;
+  min-height: 400px;
+  min-width: 600px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: black;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.35);
+margin: auto;
+margin-top: 20px;
+margin-bottom: 50px;
+  border-radius: 5px;
+  outline-color: #000000;
+  outline-width: 5px;
+}
+#tesb_downloads {
+  width: 95%;
+  align-content: bottom;
+  min-height: 40px;
+  min-width: 600px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: black;
+}
+#tesb_preview-options {
+  width: 95%;
+  align-content: bottom;
+  min-height: 40px;
+  min-width: 600px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: black;
+}
+#tesb_preview-pane {
+  width: 100%;
+  min-height: 40px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
+  background-color: #fff;
+  color: black;
+}
+  /* CSS classes */
+  .tesb_selector {
+
+  }

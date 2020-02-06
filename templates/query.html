@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div id="tesb_card_body_controls">
+  <form action = "/generate" method = "POST">
+  <div class="form-group row">
+      <label for="AuthHeader"class="col-sm-2 col-form-label" style="font-weight: bold">Authorization Token:</label>
+      <input type="password" class="form-control col-sm-8" id="AuthHeader" name="auth" placeholder="ThousandEyes user Authorization Token">
+    </div>
+    <div class="form-group row">
+      <label for="ReportSelector" class="col-sm-2 col-form-label" style="font-weight: bold">Report Query:</label>
+      <select class="form-control col-sm-8" id="ReportSelector">
+        <option value="0">Assigned Account Groups (Leave Account Group Number blank)</option>
+        <option value="1">Tests</option>
+        <option value="2">Users & Roles</option>
+        <option value="3">Report 3</option>
+        <option value="4">Report 4</option>
+        <option value="5">Report 5</option>
+      </select>
+    </div>
+    <div class="form-group row">
+      <label for="AID" class="col-sm-2 col-form-label" style="font-weight: bold">Account Group Number:</label>
+      <input type="number" class="col-sm-2 form-control" id="AID" name="aid" placeholder="AID number">
+</div>
+    <button type="submit" class=" col-sm-1 btn btn-secondary">Submit</button>
+  </form>
+  </div>
+{#      <div id="tesb_card_body_content">#}
+{#      <div id="tesb_downloads"><b>Download report:</b>#}
+{# <a href=#>json</a> |  <a href=#>csv</a>#}
+{#  </div>#}
+{#  <div id="tesb_preview-options">#}
+{#    <form class="form-inline">#}
+{#<b>Preview data:</b>#}
+{#  <div class="form-group mx-sm-3 mb-2">#}
+{#    <select class="form-control" id="preview_selector_01">#}
+{#      <option value="0">json</option>#}
+{#      <option value="1">csv</option>#}
+{#    </select>#}
+{#  </div>#}
+{#  <button type="submit" class="btn btn-secondary mb-2">Preview</button>#}
+{#</form>#}
+{#  </div>#}
+{#  <div id="tesb_preview-pane">#}
+{#    {content}#}
+{#  </div>#}
+{#        </div>#}
+{% endblock %}
