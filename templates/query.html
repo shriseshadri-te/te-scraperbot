@@ -1,5 +1,14 @@
 {% extends 'layout.html' %}
 {% block body %}
+<script>
+$(document).ready(function(){
+  $("form").submit(function(){
+    $(this).html(
+        `<div align="center"><img src="static/dancing_robot.gif"></div><br><div align="center">Your report is being generated... this may take up to 60 seconds</div>`
+      );
+  });
+});
+</script>
 <div id="tesb_card_body_controls">
   <form action = "/generate" method = "POST">
     <div class="form-group row">
@@ -23,7 +32,9 @@
       <label for="AID" class="col-sm-2 col-form-label" style="font-weight: bold">Account Group Number:</label>
       <input type="number" class="col-sm-2 form-control" id="AID" name="aid" placeholder="AID number">
 </div>
-    <button type="submit" class=" col-sm-1 btn btn-secondary">Submit</button>
+    <button type="submit" class=" col-sm-1 btn btn-secondary">
+    Submit
+    </button>
   </form>
   </div>
 {#      <div id="tesb_card_body_content">#}
