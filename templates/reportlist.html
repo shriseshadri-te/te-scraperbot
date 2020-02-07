@@ -8,20 +8,17 @@
       <th scope="col"> Created By</th>
       <th scope="col"> Report Type</th>
       <th scope="col">Query Date</th>
-      <th scope="col">json file name</th>
       <th scope="col">csv file name</th>
     </tr>
     </thead>
     <tbody>
   {% for report in reportlist %}
   <tr>
-<th scope="row">{{report.id}}</th>
+<th scope="row">{{report.report_id}}</th>
 <td>{{report.created_by}}</td>
-<td>{{report.report_type}}</td>
+<td>{{report.report_name}}</td>
 <td>{{report.query_date}}</td>
-<td>{{report.json_filename}}</td>
-<td>{{report.csv_filename}}</td>
-</tr>
+<td>{{report.csv_file_name}}</td>
   {% endfor %}
   </tbody>
   </table>

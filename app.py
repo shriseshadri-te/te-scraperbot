@@ -5,6 +5,8 @@ from AlertRules import APIAlertRules
 from UnitCalculator import APIUnitCalculator
 from AccountGroups import APIAccountGroups
 from EnterpriseAgents import APIEnterpriseAgents
+from usersRepo import getAll, save
+from datetime import date
 import json
 import time
 
@@ -22,7 +24,6 @@ def index():
 def querypage():
     return render_template('query.html')
 
-
 @app.route('/generate', methods=['POST'])
 def result():
     if request.method == 'POST':
@@ -30,9 +31,8 @@ def result():
         token = request.form.get('auth')
         aid = request.form.get('aid')
         report =  request.form.get('report')
-        print report
+        
         fileName = ''.join(report + '_' + str(aid) + '_' + str(time.time()))
-
         if report == 'Tests':
             APITests(username, token, aid, fileName)
         elif report == 'AlertRules':
@@ -43,13 +43,13 @@ def result():
             APIAccountGroups(username, token, fileName)
         elif report == 'EnterpriseAgents':
             APIEnterpriseAgents(username, token, aid, fileName)
-        # store this info in the database
+        save(username,report,date.today(),fileName)
         return send_from_directory('reports',
                                    fileName+ '.csv', as_attachment=True)
-# Query
 @app.route('/reportlist')
 def reportlist():
-    return render_template('reportlist.html', reportlist = ReportList )
+    users = getAll()
+    return render_template('reportlist.html', reportlist = users )
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', debug='True')
