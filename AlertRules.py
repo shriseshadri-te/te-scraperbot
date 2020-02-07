@@ -4,11 +4,6 @@ import json
 import os
 import shutil
 
-def APIAuthCreate(username, password):
-    # Create auth
-    auth = (username, password)
-    return auth
-
 def APIGetRules(auth, aid):
     # Define URL
     url = 'https://api.thousandeyes.com/v6/alert-rules.json?aid=' + str(aid)

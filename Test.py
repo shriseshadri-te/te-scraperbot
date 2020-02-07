@@ -27,7 +27,7 @@ def APIGetTestData(auth,testId):
     return testdatatext
 
 
-def APIMain(username, token, aid, fileName):
+def APITests(username, token, aid, fileName):
 
     # Define username and password
     # username = 'benton@thousandeyes.com'

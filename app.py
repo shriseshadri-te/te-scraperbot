@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, make_response, send_from_directory
 from data import ReportList
-from Test import APIMain
+from Test import APITests
 from AlertRules import APIAlertRules
+from UnitCalculator import APIUnitCalculator
+from AccountGroups import APIAccountGroups
+from EnterpriseAgents import APIEnterpriseAgents
 import json
 import time
 
@@ -27,8 +30,19 @@ def result():
         token = request.form.get('auth')
         aid = request.form.get('aid')
         report =  request.form.get('report')
+        print report
         fileName = ''.join(report + '_' + str(aid) + '_' + str(time.time()))
-        selectReport(username, token, aid, report, fileName)
+
+        if report == 'Tests':
+            APITests(username, token, aid, fileName)
+        elif report == 'AlertRules':
+            APIAlertRules(username, token, aid, fileName)
+        elif report == 'Usage':
+            APIUnitCalculator(username, token, aid, fileName)
+        elif report == 'AccountGroups':
+            APIAccountGroups(username, token, fileName)
+        elif report == 'EnterpriseAgents':
+            APIEnterpriseAgents(username, token, aid, fileName)
         # store this info in the database
         return send_from_directory('reports',
                                    fileName+ '.csv', as_attachment=True)
@@ -36,14 +50,6 @@ def result():
 @app.route('/reportlist')
 def reportlist():
     return render_template('reportlist.html', reportlist = ReportList )
-
-def selectReport(username, token, aid, report, fileName):
-    return {
-        'Tests': APIMain(username, token, aid, fileName),
-        'AlertRules' : APIAlertRules(username, token, aid, fileName)
-        # 'AccountGroups' : APIAlertRules(username, token, aid, fileName),
-        # 'AgentList' : APIAlertRules(username, token, aid, fileName)
-    }[report]
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', debug='True')
