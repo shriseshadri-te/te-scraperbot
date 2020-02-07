@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, make_response, send_from_directory
 from data import ReportList
 from Test import APIMain
+from usersRepo import getAll, save
 from AlertRules import APIAlertRules
+from datetime import date
 import json
 import time
 
@@ -19,7 +21,6 @@ def index():
 def querypage():
     return render_template('query.html')
 
-
 @app.route('/generate', methods=['POST'])
 def result():
     if request.method == 'POST':
@@ -29,13 +30,13 @@ def result():
         report =  request.form.get('report')
         fileName = ''.join(report + '_' + str(aid) + '_' + str(time.time()))
         selectReport(username, token, aid, report, fileName)
-        # store this info in the database
-        return send_from_directory('reports',
-                                   fileName+ '.csv', as_attachment=True)
+        save(username,report,date.today(),fileName)
+        return send_from_directory('reports', fileName+ '.csv', as_attachment=True)
 # Query
 @app.route('/reportlist')
 def reportlist():
-    return render_template('reportlist.html', reportlist = ReportList )
+    users = getAll()
+    return render_template('reportlist.html', reportlist = users )
 
 def selectReport(username, token, aid, report, fileName):
     return {
