@@ -1,16 +1,17 @@
 from requests.auth import HTTPBasicAuth
-import csv
+import csv, io
+from flask import make_response
+
 def APIAuthCreate(username, password):
     # Create auth
     auth = (username, password)
     return auth
 
 def generateCSV(fileName, data):
-    toCSV = data
-    keys = toCSV[0].keys()
-    with open('./reports/' + fileName + '.csv', 'w') as output_file:
-        dict_writer = csv.DictWriter(output_file, keys)
-        dict_writer.writeheader()
-        dict_writer.writerows(toCSV)
-    print('Test data written to file.')
-    return
+    si = io.StringIO()
+    cw = csv.writer(si)
+    cw.writerows(data)
+    output = make_response(si.getvalue())
+    output.headers["Content-Disposition"] = "attachment; filename="+fileName+".csv"
+    output.headers["Content-type"] = "text/csv"
+    return output

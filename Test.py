@@ -100,5 +100,5 @@ def APITests(username, token, aid, fileName):
     	testObject['entAgents']=entAgents
 
     # WRITE TO CSV
-    generateCSV(fileName, testobjectlist)
-    return
+    return generateCSV(fileName, testobjectlist)
+

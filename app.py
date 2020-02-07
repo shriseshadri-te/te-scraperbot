@@ -31,21 +31,19 @@ def result():
         token = request.form.get('auth')
         aid = request.form.get('aid')
         report =  request.form.get('report')
-        
         fileName = ''.join(report + '_' + str(aid) + '_' + str(time.time()))
-        if report == 'Tests':
-            APITests(username, token, aid, fileName)
-        elif report == 'AlertRules':
-            APIAlertRules(username, token, aid, fileName)
-        elif report == 'Usage':
-            APIUnitCalculator(username, token, aid, fileName)
-        elif report == 'AccountGroups':
-            APIAccountGroups(username, token, fileName)
-        elif report == 'EnterpriseAgents':
-            APIEnterpriseAgents(username, token, aid, fileName)
         save(username,report,date.today(),fileName)
-        return send_from_directory('reports',
-                                   fileName+ '.csv', as_attachment=True)
+        if report == 'Tests':
+            return APITests(username, token, aid, fileName)
+        elif report == 'AlertRules':
+            return APIAlertRules(username, token, aid, fileName)
+        elif report == 'Usage':
+            return APIUnitCalculator(username, token, aid, fileName)
+        elif report == 'AccountGroups':
+            return APIAccountGroups(username, token, fileName)
+        elif report == 'EnterpriseAgents':
+            return APIEnterpriseAgents(username, token, aid, fileName)
+
 @app.route('/reportlist')
 def reportlist():
     users = getAll()

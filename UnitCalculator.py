@@ -255,5 +255,4 @@ def APIUnitCalculator(username, token, aid, fileName):
         # ALL OUTPUT CODE HERE
 
     # WRITE TO CSV
-    generateCSV(fileName, testobjectlist)
-    return
+    return generateCSV(fileName, testobjectlist)
